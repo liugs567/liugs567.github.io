@@ -117,6 +117,10 @@ export default defineConfig({
                 text: 'Git',
                 link: '/articles/tech/git/10.%E6%89%8B%E5%86%8C/00.%E5%B8%B8%E7%94%A8Git%E5%91%BD%E4%BB%A4%E6%B8%85%E5%8D%95',
               },
+              {
+                text: 'Docker',
+                link: '/articles/tech/docker/01.Docker%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86',
+              },
               { text: '技术文档', link: '/articles/tech/docs/01.Git%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C' },
               {
                 text: 'GitHub 技巧',
@@ -124,7 +128,7 @@ export default defineConfig({
               },
               {
                 text: '博客搭建',
-                link: '/articles/tech/blog/01.%E8%A7%A3%E5%86%B3%E7%99%BE%E5%BA%A6%E6%97%A0%E6%B3%95%E6%94%B6%E5%BD%95%E6%90%AD%E5%BB%BA%E5%9C%A8GitHub%E4%B8%8A%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E9%97%AE%E9%A2%98',
+                link: '/articles/tech/blog/02.%E4%BD%BF%E7%94%A8Gitalk%E5%AE%9E%E7%8E%B0%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%97%A0%E5%90%8E%E5%8F%B0%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F',
               },
             ],
           },
@@ -145,16 +149,12 @@ export default defineConfig({
           {
             text: '系列',
             items: [
-              { text: '学习', link: '/articles/more/learning/00.%E8%B4%B9%E6%9B%BC%E5%AD%A6%E4%B9%A0%E6%B3%95' },
+              { text: '学习', link: '/more/learning/00.%E8%B4%B9%E6%9B%BC%E5%AD%A6%E4%B9%A0%E6%B3%95' },
               {
                 text: '心情杂货',
-                link: '/articles/more/misc/01.%E4%B8%80%E4%B8%AA%E5%AE%8C%E7%BE%8E%E4%B8%BB%E4%B9%89%E8%80%85%E7%9A%84%E8%87%AA%E6%88%91%E6%95%91%E8%B5%8E',
+                link: '/more/misc/01.%E4%B8%80%E4%B8%AA%E5%AE%8C%E7%BE%8E%E4%B8%BB%E4%B9%89%E8%80%85%E7%9A%84%E8%87%AA%E6%88%91%E6%95%91%E8%B5%8E',
               },
-              { text: '实用技巧', link: '/articles/more/tips/01.2%E5%88%86%E9%92%9F%E8%A7%84%E5%88%99' },
-              {
-                text: '随笔',
-                link: '/posts/%E4%BD%A0%E7%9F%A5%E9%81%93%E7%9A%84%E8%B6%8A%E5%A4%9A%EF%BC%8C%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E4%B9%9F%E5%B0%B1%E8%B6%8A%E5%A4%9A',
-              },
+              { text: '实用技巧', link: '/more/tips/01.2%E5%88%86%E9%92%9F%E8%A7%84%E5%88%99' },
             ],
           },
           {
@@ -162,7 +162,7 @@ export default defineConfig({
             items: [
               {
                 text: '面试',
-                link: '/articles/more/interview/01.%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6',
+                link: '/more/interview/01.%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6',
               },
             ],
           },

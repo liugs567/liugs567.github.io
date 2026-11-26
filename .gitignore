@@ -4,3 +4,5 @@ docs/.vitepress/dist
 dist
 .DS_Store
 *.log
+
+.firecrawl/

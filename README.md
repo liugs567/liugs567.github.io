@@ -18,7 +18,8 @@ docs/
   index.md / about.md
   articles/          # 分类文章 → /articles/<分区>/<分类>/...
     frontend/        # 前端（含 ui/css、ui/html）
-    tech/ more/
+    tech/
+  more/              # 学习 / 面试 / 杂记等
   favorites/         # 收藏
   posts/             # 随笔
   public/            # 静态资源
@@ -31,7 +32,7 @@ docs/
 | 前端 | `docs/articles/frontend/` |
 | HTML / CSS | `docs/articles/frontend/ui/` |
 | 技术文档等 | `docs/articles/tech/` |
-| 学习 / 面试等 | `docs/articles/more/` |
+| 学习 / 面试等 | `docs/more/` |
 | 随笔 | `docs/posts/` |
 | 收藏 | `docs/favorites/` |
 

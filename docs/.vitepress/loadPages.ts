@@ -1,5 +1,5 @@
 /**
- * 扫描 docs，为 articles/favorites/posts 生成文件路径侧边栏；
+ * 扫描 docs，为 articles/more/favorites/posts 生成文件路径侧边栏；
  * 若仍有 permalink 则做重写（兼容残留）。
  */
 import fs from 'node:fs'
@@ -25,7 +25,7 @@ type SidebarItem = {
 const SKIP_DIRS = new Set(['.vitepress', 'public', 'node_modules'])
 
 /** 使用文件路径、不走 permalink 的顶层目录 */
-const PATH_BASED_ROOTS = new Set(['articles', 'favorites', 'posts'])
+const PATH_BASED_ROOTS = new Set(['articles', 'favorites', 'posts', 'more'])
 
 function walk(dir: string, base = ''): string[] {
   const entries = fs.readdirSync(dir, { withFileTypes: true })
@@ -211,7 +211,7 @@ export function buildSidebar(pages: PageMeta[]): Record<string, SidebarItem[]> {
   // area 根下的单页（如 typescript.md）不挂目录，避免整区侧边栏盖住单文
   const articlesRoot = path.join(docsRoot, 'articles')
   if (fs.existsSync(articlesRoot)) {
-    for (const area of ['frontend', 'ui', 'backend', 'ai', 'tech', 'more']) {
+    for (const area of ['frontend', 'ui', 'backend', 'ai', 'tech']) {
       const areaDir = path.join(articlesRoot, area)
       if (!fs.existsSync(areaDir)) continue
 
@@ -224,6 +224,19 @@ export function buildSidebar(pages: PageMeta[]): Record<string, SidebarItem[]> {
           buildTree(sub, bySource)
         )
       }
+    }
+  }
+
+  // more/<sub>/
+  const moreRoot = path.join(docsRoot, 'more')
+  if (fs.existsSync(moreRoot)) {
+    for (const entry of fs.readdirSync(moreRoot, { withFileTypes: true })) {
+      if (!entry.isDirectory()) continue
+      mountSection(
+        sidebar,
+        `/more/${entry.name}/`,
+        buildTree(`more/${entry.name}`, bySource)
+      )
     }
   }
 
