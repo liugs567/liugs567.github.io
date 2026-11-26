@@ -38,6 +38,11 @@ export default defineConfig({
 
   markdown: {
     lineNumbers: true,
+    config(md) {
+      // 表格外包一层容器：宽表格在容器内横向滚动，正文宽度不受影响
+      md.renderer.rules.table_open = () => '<div class="vp-table-wrap"><table>'
+      md.renderer.rules.table_close = () => '</table></div>'
+    },
   },
 
   themeConfig: {

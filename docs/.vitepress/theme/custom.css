@@ -1,0 +1,325 @@
+/**
+ * 正文样式定制
+ * 排版参考 blog.cogod.cn：标题衬线、行内代码描边、引用细线、大留白分层
+ * 配色沿用本站蓝青体系；蓝色只做小面积点缀
+ */
+
+/* ==========================================================================
+   1. 变量
+   ========================================================================== */
+
+:root {
+  --blog-font-serif: 'Georgia', 'Noto Serif SC', 'Source Han Serif SC',
+    'Songti SC', 'STSong', 'SimSun', serif;
+  --blog-code-border: rgba(31, 107, 255, 0.2);
+
+  --vp-c-brand-1: #1f6bff;
+  --vp-c-brand-2: #155ad6;
+  --vp-c-brand-3: #2f7cff;
+  --vp-c-brand-soft: rgba(31, 107, 255, 0.12);
+  --blog-table-rule: #2f3542;
+
+  --vp-c-text-2: #55555f;
+  --vp-c-divider: #e3e6ef;
+  --vp-code-block-bg: #f6f8fd;
+  --vp-code-block-color: #2b2b38;
+
+  --vp-custom-block-tip-border: var(--vp-c-brand-1);
+  --vp-custom-block-tip-bg: var(--vp-c-brand-soft);
+}
+
+.dark {
+  --blog-code-border: rgba(111, 168, 255, 0.26);
+
+  --vp-c-brand-1: #6fa8ff;
+  --vp-c-brand-2: #8bbcff;
+  --vp-c-brand-3: #2f7cff;
+  --vp-c-brand-soft: rgba(111, 168, 255, 0.16);
+  --blog-table-rule: #c2c6d2;
+
+  --vp-c-text-1: #e6e6ee;
+  --vp-c-text-2: #a9adba;
+  --vp-c-bg-soft: #22232a;
+  --vp-c-divider: #35363f;
+  --vp-code-block-bg: #14161d;
+  --vp-code-block-color: #cdd3e0;
+
+  --vp-button-brand-bg: #2b6fe0;
+  --vp-button-brand-hover-bg: #3a80f5;
+  --vp-button-brand-active-bg: #1f5fc7;
+}
+
+/* ==========================================================================
+   2. 正文基础排版
+   ========================================================================== */
+
+.vp-doc p {
+  margin: 20px 0;
+  line-height: 1.75;
+  text-indent: 2em;
+}
+
+.vp-doc li {
+  line-height: 1.7;
+}
+
+.vp-doc li + li {
+  margin-top: 8px;
+}
+
+.vp-doc ::selection {
+  background: var(--vp-c-brand-soft);
+}
+/* 引用块、提示块、列表项与图片段落不加首行缩进 */
+.vp-doc blockquote p,
+.vp-doc .custom-block p,
+.vp-doc li p,
+.vp-doc p:has(> img) {
+  text-indent: 0;
+}
+
+/* ==========================================================================
+   3. 标题：衬线字体 + 字重/字号/留白分层，不加装饰线
+   ========================================================================== */
+
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc h4,
+.vp-doc h5,
+.vp-doc h6 {
+  font-family: var(--blog-font-serif);
+  color: var(--vp-c-text-1);
+}
+
+.vp-doc h1 {
+  margin: 0 0 24px;
+  font-size: 34px;
+  line-height: 1.3;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.vp-doc h2 {
+  margin: 52px 0 18px;
+  padding-top: 0;
+  border-top: none;
+  font-size: 24px;
+  line-height: 1.4;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.vp-doc h2 .header-anchor {
+  top: 0;
+}
+
+.vp-doc h3 {
+  margin: 36px 0 10px;
+  font-size: 19px;
+  line-height: 1.5;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.vp-doc h4 {
+  margin: 28px 0 8px;
+  font-size: 17px;
+  line-height: 1.5;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.vp-doc h5 {
+  margin: 26px 0 6px;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.vp-doc h6 {
+  margin: 22px 0 4px;
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--vp-c-text-2);
+}
+
+/* ==========================================================================
+   4. 引用块：淡蓝卡片 + 左侧纯蓝竖线
+   ========================================================================== */
+
+.vp-doc blockquote {
+  margin: 28px 0;
+  padding: 14px 18px;
+  border-left: 3px solid var(--vp-c-brand-1);
+  border-radius: 0 10px 10px 0;
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-text-1);
+}
+
+.vp-doc blockquote > p {
+  margin: 0;
+  font-size: 16.5px;
+  line-height: 1.8;
+  font-weight: 500;
+  color: var(--vp-c-text-1);
+}
+
+.vp-doc blockquote > p + p {
+  margin-top: 8px;
+}
+
+/* ==========================================================================
+   5. 强调文字 / 链接 / 行内代码
+   ========================================================================== */
+
+/* 加粗回归正文色，只靠字重表达重点 */
+.vp-doc strong {
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+}
+
+.vp-doc a {
+  color: var(--vp-c-brand-1);
+  text-decoration-color: currentColor;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.vp-doc a:hover {
+  color: var(--vp-c-brand-2);
+}
+
+/* 行内代码：淡色底 + 细描边，与正文区分 */
+.vp-doc :not(pre) > code {
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.86em;
+  color: var(--vp-c-brand-1);
+  background-color: var(--vp-c-brand-soft);
+  box-shadow: inset 0 0 0 1px var(--blog-code-border);
+}
+
+.vp-doc a > code {
+  color: inherit;
+}
+
+/* ==========================================================================
+   6. 列表
+   ========================================================================== */
+
+.vp-doc ul,
+.vp-doc ol {
+  padding-left: 1.5rem;
+}
+
+.vp-doc li::marker {
+  color: var(--vp-c-text-3);
+}
+
+/* ==========================================================================
+   7. 代码块
+   ========================================================================== */
+
+@media (min-width: 640px) {
+  .vp-doc div[class*='language-'] {
+    margin: 24px 0;
+    border: 1px solid var(--vp-c-divider);
+    border-radius: 10px;
+  }
+}
+
+.vp-doc [class*='language-'] > span.lang {
+  color: var(--vp-c-text-3);
+}
+
+/* ==========================================================================
+   8. 表格：三线表（仅顶线、表头下线、底线，无竖线与行隔线）
+   ========================================================================== */
+
+/* 宽表格横向滚动：滚动交给外层容器，表格本身仍占满宽度
+   （容器由 config.ts 中 markdown.config 的 table_open/table_close 注入） */
+.vp-table-wrap {
+  margin: 24px 0;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.vp-doc .vp-table-wrap > table {
+  display: table;
+  width: 100%;
+  margin: 0;
+  overflow: visible;
+  border-top: 2px solid var(--blog-table-rule);
+  border-bottom: 2px solid var(--blog-table-rule);
+  border-collapse: collapse;
+}
+
+.vp-doc th,
+.vp-doc td {
+  border: none;
+  padding: 11px 16px;
+  /* 防止列多时被压到逐字竖排：每列至少容纳约 10 个中文字
+     （单元格字号 14px，左右 padding 共 32px，14px × 10 + 32px ≈ 12.3em） */
+  min-width: 12.3em;
+}
+
+.vp-doc th {
+  color: var(--vp-c-text-1);
+  background-color: transparent;
+  font-weight: 600;
+  border-bottom: 1px solid var(--blog-table-rule);
+  white-space: nowrap;
+}
+
+.vp-doc tr {
+  border-top: none;
+  background-color: transparent;
+}
+
+.vp-doc tr:nth-child(2n) {
+  background-color: transparent;
+}
+
+/* ==========================================================================
+   9. 分隔线 / 图片
+   ========================================================================== */
+
+.vp-doc hr {
+  margin: 44px 0;
+  border: none;
+  border-top: 1px solid var(--vp-c-divider);
+}
+
+.vp-doc img {
+  border-radius: 10px;
+}
+
+.dark .vp-doc img {
+  border: 1px solid var(--vp-c-divider);
+}
+
+/* ==========================================================================
+   10. 提示块
+   ========================================================================== */
+
+.vp-doc .custom-block {
+  padding: 14px 18px;
+  border-radius: 10px;
+}
+
+/* ==========================================================================
+   11. 右侧目录高亮
+   ========================================================================== */
+
+.VPDocAsideOutline .outline-link:hover {
+  color: var(--vp-c-brand-1);
+}
+
+.VPDocAsideOutline .outline-link.active {
+  color: var(--vp-c-brand-1);
+  font-weight: 600;
+}
