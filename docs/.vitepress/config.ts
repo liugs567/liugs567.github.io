@@ -15,6 +15,9 @@ export default defineConfig({
   description:
     'web前端技术博客,专注web前端学习与总结。JavaScript,js,ES6,TypeScript,vue,React,python,css3,html5,Node,git,github等技术文章。',
 
+  // 用户站仓库名需为 liugs567.github.io → https://liugs567.github.io/
+  base: '/',
+
   cleanUrls: true,
   ignoreDeadLinks: true,
   lastUpdated: true,
