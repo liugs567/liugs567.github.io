@@ -1,5 +1,5 @@
 /**
- * 扫描 docs，为 notes/articles/favorites/posts 生成文件路径侧边栏；
+ * 扫描 docs，为 articles/favorites/posts 生成文件路径侧边栏；
  * 若仍有 permalink 则做重写（兼容残留）。
  */
 import fs from 'node:fs'
@@ -25,7 +25,7 @@ type SidebarItem = {
 const SKIP_DIRS = new Set(['.vitepress', 'public', 'node_modules'])
 
 /** 使用文件路径、不走 permalink 的顶层目录 */
-const PATH_BASED_ROOTS = new Set(['notes', 'articles', 'favorites', 'posts'])
+const PATH_BASED_ROOTS = new Set(['articles', 'favorites', 'posts'])
 
 function walk(dir: string, base = ''): string[] {
   const entries = fs.readdirSync(dir, { withFileTypes: true })
@@ -199,27 +199,13 @@ function mountSection(
   tree: SidebarItem[]
 ) {
   if (!tree.length) return
-  // 直接挂树，不再包一层目录名（避免 notes/git 下再套一个「git」）
+  // 直接挂树，不再包一层目录名（避免 frontend/git 下再套一个「git」）
   sidebar[mountPath.endsWith('/') ? mountPath : `${mountPath}/`] = tree
 }
 
 export function buildSidebar(pages: PageMeta[]): Record<string, SidebarItem[]> {
   const bySource = new Map(pages.map((p) => [p.source, p]))
   const sidebar: Record<string, SidebarItem[]> = {}
-
-  // notes/<book>/
-  const notesRoot = path.join(docsRoot, 'notes')
-  if (fs.existsSync(notesRoot)) {
-    const books = fs
-      .readdirSync(notesRoot, { withFileTypes: true })
-      .filter((d: fs.Dirent) => d.isDirectory())
-      .map((d: fs.Dirent) => d.name)
-
-    for (const book of books) {
-      mountSection(sidebar, `/notes/${book}/`, buildTree(`notes/${book}`, bySource))
-    }
-
-  }
 
   // articles/<area>/<sub>/：只给有子目录的分类挂侧边栏
   // area 根下的单页（如 typescript.md）不挂目录，避免整区侧边栏盖住单文

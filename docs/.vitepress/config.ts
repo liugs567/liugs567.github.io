@@ -44,25 +44,34 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' },
       {
-        text: '笔记',
+        text: '前端',
         items: [
           {
             text: '系列',
             items: [
-              { text: 'JavaScript 教程', link: '/notes/javascript/01.%E5%9F%BA%E7%A1%80' },
-              { text: 'ES6 教程', link: '/notes/es6/01.ECMAScript%206%20%E7%AE%80%E4%BB%8B' },
-              { text: 'Vue', link: '/notes/vue/01.%E5%9F%BA%E7%A1%80/00.MVVM%E6%A8%A1%E5%BC%8F' },
               {
-                text: 'React',
-                link: '/notes/react/01.%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5/01.JSX%E7%AE%80%E4%BB%8B',
+                text: 'JavaScript 教程',
+                link: '/articles/frontend/javascript/01.%E5%9F%BA%E7%A1%80',
+              },
+              {
+                text: 'ES6 教程',
+                link: '/articles/frontend/es6/01.ECMAScript%206%20%E7%AE%80%E4%BB%8B',
+              },
+              {
+                text: 'Vue',
+                link: '/articles/frontend/vue/01.%E5%9F%BA%E7%A1%80/00.MVVM%E6%A8%A1%E5%BC%8F',
               },
               {
                 text: 'TypeScript 从零实现 axios',
-                link: '/notes/typescript-axios/01.%E5%88%9D%E8%AF%86%20TypeScript/01.%E7%AE%80%E4%BB%8B',
+                link: '/articles/frontend/typescript-axios/01.%E5%88%9D%E8%AF%86%20TypeScript/01.%E7%AE%80%E4%BB%8B',
               },
               {
-                text: 'Git',
-                link: '/notes/git/10.%E6%89%8B%E5%86%8C/00.%E5%B8%B8%E7%94%A8Git%E5%91%BD%E4%BB%A4%E6%B8%85%E5%8D%95',
+                text: 'JavaScript',
+                link: '/articles/frontend/javascript/01.33%E4%B8%AA%E9%9D%9E%E5%B8%B8%E5%AE%9E%E7%94%A8%E7%9A%84JavaScript%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81',
+              },
+              {
+                text: 'CSS',
+                link: '/articles/frontend/ui/css/00.CSS%E6%95%99%E7%A8%8B%E5%92%8C%E6%8A%80%E5%B7%A7%E6%94%B6%E8%97%8F',
               },
             ],
           },
@@ -71,35 +80,12 @@ export default defineConfig({
             items: [
               {
                 text: 'JavaScript 高级程序设计',
-                link: '/notes/js/01.JavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1',
+                link: '/articles/frontend/js/01.JavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1',
               },
-            ],
-          },
-        ],
-      },
-      {
-        text: '前端',
-        items: [
-          {
-            text: '系列',
-            items: [
-              {
-                text: 'JavaScript',
-                link: '/articles/frontend/javascript/01.33%E4%B8%AA%E9%9D%9E%E5%B8%B8%E5%AE%9E%E7%94%A8%E7%9A%84JavaScript%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81',
-              },
-              {
-                text: 'CSS',
-                link: '/articles/ui/css/00.CSS%E6%95%99%E7%A8%8B%E5%92%8C%E6%8A%80%E5%B7%A7%E6%94%B6%E8%97%8F',
-              },
-            ],
-          },
-          {
-            text: '文章',
-            items: [
               { text: 'TypeScript', link: '/articles/frontend/typescript' },
               { text: '小程序', link: '/articles/frontend/miniprogram' },
               { text: 'JS 设计模式', link: '/articles/frontend/js-patterns' },
-              { text: 'HTML', link: '/articles/ui/html/10.%E5%B8%B8%E7%94%A8meta%E6%95%B4%E7%90%86' },
+              { text: 'HTML', link: '/articles/frontend/ui/html/10.%E5%B8%B8%E7%94%A8meta%E6%95%B4%E7%90%86' },
             ],
           },
         ],
@@ -124,6 +110,10 @@ export default defineConfig({
           {
             text: '系列',
             items: [
+              {
+                text: 'Git',
+                link: '/articles/tech/git/10.%E6%89%8B%E5%86%8C/00.%E5%B8%B8%E7%94%A8Git%E5%91%BD%E4%BB%A4%E6%B8%85%E5%8D%95',
+              },
               { text: '技术文档', link: '/articles/tech/docs/01.Git%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C' },
               {
                 text: 'GitHub 技巧',
@@ -181,9 +171,9 @@ export default defineConfig({
 
     sidebar,
 
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/xugaoyi/vuepress-theme-vdoing' },
-    ],
+    // socialLinks: [
+    //   { icon: 'github', link: 'https://github.com/liugs567/vitepress-blog' },
+    // ],
 
     search: {
       provider: 'local',
