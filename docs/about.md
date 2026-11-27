@@ -9,7 +9,7 @@ sidebar: false
 
 主要写这些：
 
-- **前端**：JavaScript、ES6、Vue、TypeScript……想到啥记啥
+- **前端**：ES6、TypeScript、CSS……想到啥记啥
 - **技术**：Git、文档、GitHub、博客搭建、Node.js 等杂七杂八
 - **更多**：学习方法、小技巧、面试题，以及一些摸鱼随笔
 
@@ -19,7 +19,7 @@ sidebar: false
 
 ## 技能（大概）
 
-- 熟悉 JavaScript、HTML、CSS、Vue 的拼写
+- 熟悉 JavaScript、HTML、CSS、TypeScript 的拼写
 - 了解 Windows / macOS 的开关机方式
 - 精通 Git 的 `pull` 和 `push`，偶尔还会 `commit`
 - 会把报错复制到搜索引擎，并认真阅读前三条结果

@@ -70,12 +70,18 @@
 .vp-doc ::selection {
   background: var(--vp-c-brand-soft);
 }
-/* 引用块、提示块、列表项与图片段落不加首行缩进 */
+/* 引用块、提示块、列表项、图片段落、Mermaid 图不加首行缩进 */
 .vp-doc blockquote p,
 .vp-doc .custom-block p,
 .vp-doc li p,
-.vp-doc p:has(> img) {
+.vp-doc p:has(> img),
+.vp-doc .mermaid p {
   text-indent: 0;
+}
+
+/* Mermaid 内部段落不要套正文 margin，否则节点文字会被挤偏 */
+.vp-doc .mermaid p {
+  margin: 0;
 }
 
 /* ==========================================================================
@@ -298,8 +304,73 @@
   border-radius: 10px;
 }
 
+.vp-doc img:not(.no-zoom) {
+  cursor: zoom-in;
+}
+
+.vp-doc .mermaid:not(.no-zoom) {
+  cursor: zoom-in;
+}
+
 .dark .vp-doc img {
   border: 1px solid var(--vp-c-divider);
+}
+
+/* Mermaid 点击放大层 */
+.mermaid-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.78);
+  cursor: grab;
+  overflow: auto;
+  overscroll-behavior: contain;
+  /* 用 grid + safe center：内容小时居中，放大溢出时靠到左上，四边都能滚到 */
+  display: grid;
+  justify-items: center;
+  justify-items: safe center;
+  align-items: center;
+  align-items: safe center;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.mermaid-lightbox.is-dragging {
+  cursor: grabbing;
+  user-select: none;
+}
+
+.mermaid-lightbox__stage {
+  cursor: grab;
+  filter: drop-shadow(0 8px 32px rgba(0, 0, 0, 0.45));
+}
+
+.mermaid-lightbox.is-dragging .mermaid-lightbox__stage {
+  cursor: grabbing;
+}
+
+.mermaid-lightbox__stage svg {
+  display: block;
+  /* 内联宽高被改写时也能铺满 stage，不会溢出撑出滚动条 */
+  width: 100%;
+  height: 100%;
+  background: var(--vp-c-bg);
+  border-radius: 10px;
+  padding: 16px;
+  /* border-box：JS 给多大盒子就是多大，不会因内边距再撑出去 */
+  box-sizing: border-box;
+  /* mermaid 插件会写 inline max-width（等于文档里的显示宽度），放大时必须压掉 */
+  max-width: none !important;
+  max-height: none !important;
+}
+
+/* medium-zoom 遮罩层 */
+.medium-zoom-overlay {
+  z-index: 100;
+}
+
+.medium-zoom-image--opened {
+  z-index: 101;
 }
 
 /* ==========================================================================

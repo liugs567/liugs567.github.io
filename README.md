@@ -1,4 +1,4 @@
-# Shawn's blog
+# Shawn's Blog
 
 基于 [VitePress](https://vitepress.dev/) 的个人前端技术博客。仅供学习交流，非商业用途。
 

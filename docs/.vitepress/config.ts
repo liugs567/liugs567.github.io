@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import { withMermaid } from 'vitepress-plugin-mermaid'
 import {
   buildRewrites,
   buildSidebar,
@@ -9,9 +10,10 @@ const pages = loadPages()
 const rewrites = buildRewrites(pages)
 const sidebar = buildSidebar(pages)
 
-export default defineConfig({
+export default withMermaid(
+  defineConfig({
   lang: 'zh-CN',
-  title: "Shawn's blog",
+  title: "Shawn's Blog",
   description:
     'web前端技术博客,专注web前端学习与总结。JavaScript,js,ES6,TypeScript,vue,React,python,css3,html5,Node,git,github等技术文章。',
 
@@ -38,6 +40,7 @@ export default defineConfig({
 
   markdown: {
     lineNumbers: true,
+    math: true,
     config(md) {
       // 表格外包一层容器：宽表格在容器内横向滚动，正文宽度不受影响
       md.renderer.rules.table_open = () => '<div class="vp-table-wrap"><table>'
@@ -45,9 +48,20 @@ export default defineConfig({
     },
   },
 
+  // mermaid 11 + fastdom 的 CJS 默认导出需要 interop，否则页面空白
+  vite: {
+    optimizeDeps: {
+      include: ['mermaid', 'fastdom', 'debug', 'dayjs'],
+      needsInterop: ['fastdom'],
+    },
+    ssr: {
+      noExternal: ['mermaid', 'vitepress-plugin-mermaid'],
+    },
+  },
+
   themeConfig: {
     logo: '/img/logo.png',
-    siteTitle: "Shawn's blog",
+    siteTitle: "Shawn's Blog",
 
     nav: [
       { text: '首页', link: '/' },
@@ -58,24 +72,12 @@ export default defineConfig({
             text: '系列',
             items: [
               {
-                text: 'JavaScript 教程',
-                link: '/articles/frontend/javascript/01.%E5%9F%BA%E7%A1%80',
-              },
-              {
                 text: 'ES6 教程',
                 link: '/articles/frontend/es6/01.ECMAScript%206%20%E7%AE%80%E4%BB%8B',
               },
               {
-                text: 'Vue',
-                link: '/articles/frontend/vue/01.%E5%9F%BA%E7%A1%80/00.MVVM%E6%A8%A1%E5%BC%8F',
-              },
-              {
                 text: 'TypeScript 从零实现 axios',
                 link: '/articles/frontend/typescript-axios/01.%E5%88%9D%E8%AF%86%20TypeScript/01.%E7%AE%80%E4%BB%8B',
-              },
-              {
-                text: 'JavaScript',
-                link: '/articles/frontend/javascript/01.33%E4%B8%AA%E9%9D%9E%E5%B8%B8%E5%AE%9E%E7%94%A8%E7%9A%84JavaScript%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81',
               },
               {
                 text: 'CSS',
@@ -86,13 +88,7 @@ export default defineConfig({
           {
             text: '文章',
             items: [
-              {
-                text: 'JavaScript 高级程序设计',
-                link: '/articles/frontend/js/01.JavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1',
-              },
               { text: 'TypeScript', link: '/articles/frontend/typescript' },
-              { text: '小程序', link: '/articles/frontend/miniprogram' },
-              { text: 'JS 设计模式', link: '/articles/frontend/js-patterns' },
               { text: 'HTML', link: '/articles/frontend/ui/html/10.%E5%B8%B8%E7%94%A8meta%E6%95%B4%E7%90%86' },
             ],
           },
@@ -212,4 +208,5 @@ export default defineConfig({
     lightModeSwitchTitle: '切换到浅色模式',
     darkModeSwitchTitle: '切换到深色模式',
   },
-})
+  }),
+)
